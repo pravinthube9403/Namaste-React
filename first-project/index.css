@@ -72,6 +72,9 @@
 .search-wrapper button:hover {
   background: #e65a00;
 }
+.search-box{
+  margin-right: 10px;
+}
 
 .res-wrapper {
   display: flex;

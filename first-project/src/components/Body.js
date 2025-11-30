@@ -6,6 +6,9 @@ const Body = () => {
   // Local state variable
   const [ListOfRestaurent, setListOfRestaurent] = useState([]);
 
+  const [SearchText, setSearchText] = useState("");
+  const [FilteredSearchRestro, setFilteredSearchRestro] = useState([]);
+
   useEffect(() => {
     console.log("useEffect Function");
     fetchData();
@@ -25,6 +28,7 @@ const Body = () => {
       ) || [];
     console.log(restaurants);
     setListOfRestaurent(restaurants);
+    setFilteredSearchRestro(restaurants);
   };
   //Conditional rendering
   // if (ListOfRestaurent.length == 0) {
@@ -43,16 +47,42 @@ const Body = () => {
                 const rating = Number(res?.avgRating);
                 return rating >= 4;
               });
-              setListOfRestaurent(Filtered);
+              setFilteredSearchRestro(Filtered);
             }}
           >
             Top Restaurants
           </button>
+          <div className="search-wrap">
+            <input
+              type="text"
+              className="search-box"
+              value={SearchText}
+              onChange={(e) => {
+                setSearchText(e.target.value);
+              }}
+            />
+            <button
+              onClick={() => {
+                const fillteredRestro = ListOfRestaurent.filter((res) =>
+                  res.name
+                    .toLowerCase()
+                    .includes(SearchText.toLocaleLowerCase())
+                );
+                setFilteredSearchRestro(fillteredRestro);
+              }}
+            >
+              Search
+            </button>
+          </div>
         </div>
         <div className="res-wrapper">
-          {ListOfRestaurent.map((restaurent) => {
-            return <RestroCard key={restaurent.id} resData={restaurent} />;
-          })}
+          {FilteredSearchRestro.length === 0 ? (
+            <h3>No Restro Found</h3>
+          ) : (
+            FilteredSearchRestro.map((restaurent) => {
+              return <RestroCard key={restaurent.id} resData={restaurent} />;
+            })
+          )}
         </div>
       </div>
     </div>

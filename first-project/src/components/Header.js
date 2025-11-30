@@ -20,7 +20,8 @@ const Header = () => {
               <button
                 className="login"
                 onClick={() => {
-                  setbtnName((prev)=>(prev==="Login" ? "Logout" : "Login"));
+                  btnName==="Login" ? setbtnName("Logout") : setbtnName("Login") 
+                  // setbtnName((prev)=>(prev==="Login" ? "Logout" : "Login"));
                 }}
               >
                 {btnName}

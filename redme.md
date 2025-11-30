@@ -16,10 +16,11 @@
 
 -normal js utility function
 
--useState()
- 
+--useState()
+   -whenever state variable changes ,react triggers a reconciliation cycle(Re-Renders the components)
+   
 -useEffect()
- --it called after the component render
+--it called after the component render
 
 # Virtual DOM
 
@@ -50,4 +51,3 @@
 -seperation of consons
 
 --how to interact with each other
--
