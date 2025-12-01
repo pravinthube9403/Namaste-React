@@ -5,7 +5,6 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   // Local state variable
   const [ListOfRestaurent, setListOfRestaurent] = useState([]);
-
   const [SearchText, setSearchText] = useState("");
   const [FilteredSearchRestro, setFilteredSearchRestro] = useState([]);
 
@@ -20,13 +19,12 @@ const Body = () => {
     );
 
     const json = await data.json();
-    console.log(json);
 
     const restaurants =
       json?.data?.cards?.[1]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards?.map(
         (item) => item.card.card.info
       ) || [];
-    console.log(restaurants);
+
     setListOfRestaurent(restaurants);
     setFilteredSearchRestro(restaurants);
   };
@@ -88,4 +86,5 @@ const Body = () => {
     </div>
   );
 };
+
 export default Body;

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 
 const Header = () => {
   const [btnName, setbtnName] = useState("Login");
+  
+  console.log("header render")
+  useEffect(() => {
+    console.log("Header UseEffect Called");
+  },[btnName]);
   return (
     <header>
       <div className="container">
@@ -20,7 +25,9 @@ const Header = () => {
               <button
                 className="login"
                 onClick={() => {
-                  btnName==="Login" ? setbtnName("Logout") : setbtnName("Login") 
+                  btnName === "Login"
+                    ? setbtnName("Logout")
+                    : setbtnName("Login");
                   // setbtnName((prev)=>(prev==="Login" ? "Logout" : "Login"));
                 }}
               >
