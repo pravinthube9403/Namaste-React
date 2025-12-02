@@ -79,3 +79,15 @@
 --how to interact with each other
 
 # Routing
+
+# 2 types of routing
+
+# 1 client side routing
+
+-without making a network calling
+-eg about component contact component
+
+# 2 server side routing
+
+- make a network call and the page come from server
+  -eg card component
